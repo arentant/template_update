@@ -10,11 +10,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
-    - name: Read Template
+    - name: html escape
       id: template
-      uses: andstor/file-reader-action@v1
-      with:
-        path: "template.html"
+      run: |
+        echo "::set-output name=contents::$(sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g' template.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
