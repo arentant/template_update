@@ -14,15 +14,10 @@ jobs:
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
-        url: https://api.sendgrid.com//v3/templates/${{ TEMPLATE_1 }}/versions
+        url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
         method: 'POST'
-        bearerToken: ${{ SG_KEY }}
+        bearerToken: ${{ secrets.SG_API_KEY }}
         contentType: appilication/json
-        data: '{
-          "active": 1,
-          "name": "Test5",
-          "html_content": "dolor",
-          "editor": "code"
-        }'
+        data: '{ "active": 1,"name": "Test5","html_content": "dolor","editor": "code" }'
 
 
