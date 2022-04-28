@@ -12,7 +12,7 @@ jobs:
       id: template
       uses: juliangruber/read-file-action@v1
       with:
-        path: ../template1.html
+        path: ./template1.html
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
