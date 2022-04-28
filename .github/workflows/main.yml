@@ -1,7 +1,4 @@
 name: Template Update
-env:
-  SG_KEY: ${{ secrets.SG_API_KEY }}
-  TEMPLATE_1: ${{ secrets.TEMP_1_ID }}
 
 on:
   push:
@@ -14,10 +11,10 @@ jobs:
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
-        url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
-        method: 'POST'
-        bearerToken: ${{ secrets.SG_API_KEY }}
         contentType: appilication/json
-        data: '{ "active": 1,"name": "Test5","html_content": "dolor","editor": "code" }'
+        url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
+        bearerToken: ${{ secrets.SG_API_KEY }}
+        method: 'POST'
+        data: '{ "active": 1,"name": "Test5","html_content": account_code_new.html,"editor": "code" }'
 
 
