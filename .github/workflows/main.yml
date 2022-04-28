@@ -1,4 +1,6 @@
 name: Template Update
+env:
+  html_code: ${{ account_code_new.html }}
 
 on:
   push:
@@ -15,6 +17,6 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'POST'
-        data: '{ "active": 1,"name": "Test5","html_content": account_code_new.html,"editor": "code" }'
+        data: '{ "active": 1,"name": "Test5","html_content": "${{ account_code_new.html }}"","editor": "code" }'
 
 
