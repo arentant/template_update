@@ -10,9 +10,9 @@ jobs:
     steps:
     - name: Read Template
       id: template
-      uses: juliangruber/read-file-action@v1
+      uses: andstor/file-reader-action@v1
       with:
-        path: ./package.json
+        path: "template.html"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
