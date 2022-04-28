@@ -14,6 +14,8 @@ jobs:
       id: template
       run: |
         echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
+    - name: echo test
+      run: echo ${{ steps.template.outputs.contents }}
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
