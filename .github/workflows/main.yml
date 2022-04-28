@@ -22,6 +22,6 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'POST'
-        data: '{ "active": 1,"name": "Test5","html_content": "${{ steps.template.outputs.content }}","editor": "code" }'
+        data: '{ "active": 1,"name": "Test5","html_content": "${{ steps.template.outputs.contents }}","editor": "code" }'
 
 
