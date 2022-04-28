@@ -10,11 +10,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v1
-    - name: Read Template
+    - name: html escape
       id: template
-      uses: andstor/file-reader-action@v1
-      with:
-        path: "template.html"
+      run: |
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
+    - name: echo test
+      run: echo ${{ steps.template.outputs.contents }}
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
@@ -22,6 +23,6 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_1_ID }}/versions
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'POST'
-        data: '{ "active": 1,"name": "Test5","html_content": "${{ steps.template.outputs.content }}","editor": "code" }'
+        data: '{ "active": 1,"name": "Test5","html_content": "${{ steps.template.outputs.contents }}","editor": "code" }'
 
 
