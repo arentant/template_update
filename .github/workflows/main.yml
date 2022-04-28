@@ -8,6 +8,8 @@ jobs:
   sg_deploy:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout code
+      uses: actions/checkout@v1
     - name: Read Template
       id: template
       uses: andstor/file-reader-action@v1
