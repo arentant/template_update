@@ -12,10 +12,10 @@ jobs:
     - name: Minify CSS
       uses: docker://devatherock/minify-js:1.0.3
       with:
-        directory: 'css'      
+        directory: 'css/style.css'      
         output: 'src'
-
-  html_minify:
+  
+  sg_deploy:
     runs-on: ubuntu-latest
     needs: [css_minify]
     steps:
@@ -25,11 +25,6 @@ jobs:
       id: template
       run: |
         echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
-  
-  sg_deploy:
-    runs-on: ubuntu-latest
-    needs: [html_minify]
-    steps:
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
