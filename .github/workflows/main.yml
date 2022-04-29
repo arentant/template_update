@@ -5,17 +5,28 @@ on:
     branches: [ main ]
 
 jobs:
-  sg_deploy:
+
+  css_minify:
     runs-on: ubuntu-latest
     steps:
+    - name: Minify CSS
+      uses: docker://devatherock/minify-js:1.0.3
+      with:
+        directory: 'css/style.css'      
+        output: 'src'
+  
+  sg_deploy:
+    runs-on: ubuntu-latest
+    # needs: [css_minify]
+    steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v3
+    - name: Minify Action
+      uses: anthonyftwang/minify-action@v1.0.1
     - name: html escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
-    - name: echo test
-      run: echo ${{ steps.template.outputs.contents }}
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' template2.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
