@@ -24,19 +24,13 @@ jobs:
       with:
         ref: ${{ github.ref }}
 
-    - name: HTML Minify
-      uses: docker://devatherock/minify-js:1.0.3
-      with:
-        directory: 'template2.html'
-        output: 'src'
-    - name: xz
-      run: |
-        echo "::set-output name=htmlmin::$(srctemplate2.html)"
+    - name: Minify Action
+      uses: anthonyftwang/minify-action@v1.0.1
       
     - name: html escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' htmlmin)"
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' template2.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
@@ -45,5 +39,3 @@ jobs:
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'POST'
         data: '{ "active": 1,"name": "Test5","html_content": "${{ steps.template.outputs.contents }}","editor": "code" }'
-
-
