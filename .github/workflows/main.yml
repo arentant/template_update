@@ -24,7 +24,7 @@ jobs:
     - name: Minify HTML
       uses: docker://devatherock/minify-js:1.0.3
       with:
-        directory: 'template'      
+        directory: 'template.html'      
     - name: html escape
       id: template
       run: |
