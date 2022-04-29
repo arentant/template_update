@@ -21,8 +21,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Minify Action
-      uses: anthonyftwang/minify-action@v1.0.1
+    # - name: Minify Action
+    #  uses: anthonyftwang/minify-action@v1.0.1
     - name: html escape
       id: template
       run: |
