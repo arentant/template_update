@@ -9,17 +9,11 @@ jobs:
   css_minify:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
     - name: Minify CSS
-      uses: ./
+      uses: docker://devatherock/minify-js:1.0.3
       with:
-        folder: './'
-      
-    - name: Print out test file.
-      run: |
-        cat test.min.css
-    - name: test css
-      run: echo test.min.css
+        directory: 'css'      
+        output: 'src'
 
   html_minify:
     runs-on: ubuntu-latest
