@@ -33,7 +33,7 @@ jobs:
     - name: html escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' template2.html)"
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' images/template2.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
