@@ -24,8 +24,8 @@ jobs:
       with:
         ref: ${{ github.ref }}
 
-    - name: Web minifier
-      uses: zugazagoitia/minify-js@v0.2
+    - name: HTML Minify
+      uses: docker://devatherock/minify-js:1.0.3
       with:
         directory: 'template2.html'
         output: 'src'
