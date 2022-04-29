@@ -5,15 +5,6 @@ on:
     branches: [ main ]
 
 jobs:
-
-  css_minify:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Minify CSS
-      uses: docker://devatherock/minify-js:1.0.3
-      with:
-        directory: 'css/style.css'      
-        output: 'src'
   
   sg_deploy:
     runs-on: ubuntu-latest
@@ -27,7 +18,7 @@ jobs:
     - name: Minify Action
       uses: anthonyftwang/minify-action@v1.0.1
       
-    - name: html escape
+    - name: HTML Escape
       id: template
       run: |
         echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
