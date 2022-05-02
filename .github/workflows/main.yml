@@ -15,7 +15,7 @@ jobs:
         ref: ${{ github.ref }}
 
     - name: Inline CSS
-      uses: arkoc/inline-css-action@v0.2
+      uses: arkoc/inline-css-action@v0.3
       with:
         html-path: 'template.html'
     
