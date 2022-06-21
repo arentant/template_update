@@ -1,16 +1,32 @@
+h3 {
+  color: black;
+  font-size: 22px;
+  text-align: center
+}
+
+hr.horizontal-gradient {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, hsla(0, 0%, 100%, 0), #1A2949, hsla(0, 0%, 100%, 0));
+  width: 585px;
+}
+
 .subheading {
   opacity: 80%;
   color: #010101;
+  text-align: left;
 }
 
 .help {
   padding-top: 20px;
   font-size: medium;
-  color: #010101
+  color: #010101;
+  text-align: left;
 }
 
 .a_help {
   color: #010101;
+
 }
 
 .o_text-dark {
@@ -31,7 +47,8 @@
   font-family: Helvetica, Arial, sans-serif; }
 
 .o_heading {
-  font-weight: bold; }
+  font-weight: bold;
+}
 
 .o_sans,
 .o_heading,
@@ -40,9 +57,7 @@
   margin-top: 0px;
   margin-bottom: 0px; }
 
-a {
-  text-decoration: none;
-  outline: none; }
+
 
 .o_underline {
   text-decoration: underline; }
@@ -85,7 +100,7 @@ h1.o_heading {
   line-height: 47px; }
 
 h2.o_heading {
-  font-size: 30px;
+  font-size: 26px;
   line-height: 39px; 
   color:#010101;
 }
