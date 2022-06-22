@@ -8,7 +8,8 @@ hr.horizontal-gradient {
   border: 0;
   height: 1px;
   background-image: linear-gradient(to right, hsla(0, 0%, 100%, 0), #1A2949, hsla(0, 0%, 100%, 0));
-  width: 585px;
+  max-width: 585px;
+  place-content: center;
 }
 
 .subheading {
