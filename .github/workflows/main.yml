@@ -6,7 +6,7 @@ on:
 
 jobs:
   
-  sg_deploy:
+  sg_deploy_1:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -17,7 +17,7 @@ jobs:
     - name: Inline CSS
       uses: arkoc/inline-css-action@v0.3
       with:
-        html-path: 'template.html'
+        html-path: 'ConfirmTemplate/confirmTemplate.html'
     
     - name: Minify Action
       uses: anthonyftwang/minify-action@v1.0.1
@@ -25,14 +25,43 @@ jobs:
     - name: HTML Escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' template.html)"
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' confirmTemplate.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
         contentType: appilication/json
-        url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_2_ID }}/versions/${{ secrets.TEMP_2_VERSION }}
+        url: https://api.sendgrid.com//v3/templates/${{ secrets.CODE_TEST_ID }}/versions/${{ secrets.CODE_TEST_VERSION_ID }}
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'PATCH'
         data: '{ "active": 0,"name": "ConfirmationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
+
+  sg_deploy_2: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+
+    - name: Inline CSS
+      uses: arkoc/inline-css-action@v0.3
+      with:
+        html-path: 'AuthTemplate/authTemplate.html'
+    
+    - name: Minify Action
+      uses: anthonyftwang/minify-action@v1.0.1
+      
+    - name: HTML Escape
+      id: template
+      run: |
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' authTemplate.html)"
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1
+      with:
+        contentType: appilication/json
+        url: https://api.sendgrid.com//v3/templates/${{ secrets.AUTH_TEST_ID }}/versions/${{ secrets.AUTH_TEST_VERSION_ID }}
+        bearerToken: ${{ secrets.SG_API_KEY }}
+        method: 'PATCH'
+        data: '{ "active": 0,"name": "AuthenticationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
         
 
