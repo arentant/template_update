@@ -62,6 +62,6 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.TEMP_2_ID }}/versions/${{ secrets.TEMP_2_VERSION }}
         bearerToken: ${{ secrets.SG_API_KEY }}
         method: 'PATCH'
-        data: '{ "active": 0,"name": "ConfirmationTemplate_Test ","html_content": "${{ steps.template.outputs.contents }}" }'
+        data: '{ "active": 1,"name": "ConfirmationTemplate_Test ","html_content": "${{ steps.template.outputs.contents }}" }'
         
 
