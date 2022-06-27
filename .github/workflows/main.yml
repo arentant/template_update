@@ -17,7 +17,7 @@ jobs:
     - name: Inline CSS
       uses: arkoc/inline-css-action@v0.3
       with:
-        html-path: 'ConfirmTemplate/confirmTemplate.html'
+        html-path: 'confirmTemplate.html'
     
     - name: Minify Action
       uses: anthonyftwang/minify-action@v1.0.1
@@ -46,7 +46,7 @@ jobs:
     - name: Inline CSS
       uses: arkoc/inline-css-action@v0.3
       with:
-        html-path: 'AuthTemplate/authTemplate.html'
+        html-path: 'authTemplate.html'
     
     - name: Minify Action
       uses: anthonyftwang/minify-action@v1.0.1
