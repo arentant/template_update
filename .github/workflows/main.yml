@@ -25,7 +25,7 @@ jobs:
     - name: HTML Escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' confirmTemplate.html)"
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' ./ConfirmTemplate/confirmTemplate.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
@@ -33,7 +33,7 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.CODE_TEST_ID }}/versions/${{ secrets.CODE_TEST_VERSION_ID }}
         bearerToken: ${{ secrets.TEST_DEPLOY_API }}
         method: 'PATCH'
-        data: '{ "active": 0,"name": "ConfirmationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
+        data: '{ "active": 1,"name": "ConfirmationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
 
   sg_deploy_2: 
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
     - name: HTML Escape
       id: template
       run: |
-        echo "::set-output name=contents::$(sed 's/"/\\"/g' authTemplate.html)"
+        echo "::set-output name=contents::$(sed 's/"/\\"/g' ./AuthTemplate/authTemplate.html)"
     - name: Deploy Stage
       uses: fjogeleit/http-request-action@v1
       with:
@@ -62,6 +62,6 @@ jobs:
         url: https://api.sendgrid.com//v3/templates/${{ secrets.AUTH_TEST_ID }}/versions/${{ secrets.AUTH_TEST_VERSION_ID }}
         bearerToken: ${{ secrets.TEST_DEPLOY_API }}
         method: 'PATCH'
-        data: '{ "active": 0,"name": "AuthenticationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
+        data: '{ "active": 1,"name": "AuthenticationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
         
 
