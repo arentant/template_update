@@ -31,7 +31,7 @@ jobs:
       with:
         contentType: appilication/json
         url: https://api.sendgrid.com//v3/templates/${{ secrets.CODE_TEST_ID }}/versions/${{ secrets.CODE_TEST_VERSION_ID }}
-        bearerToken: ${{ secrets.SG_API_KEY }}
+        bearerToken: ${{ secrets.TEST_DEPLOY_API }}
         method: 'PATCH'
         data: '{ "active": 0,"name": "ConfirmationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
 
@@ -60,7 +60,7 @@ jobs:
       with:
         contentType: appilication/json
         url: https://api.sendgrid.com//v3/templates/${{ secrets.AUTH_TEST_ID }}/versions/${{ secrets.AUTH_TEST_VERSION_ID }}
-        bearerToken: ${{ secrets.SG_API_KEY }}
+        bearerToken: ${{ secrets.TEST_DEPLOY_API }}
         method: 'PATCH'
         data: '{ "active": 0,"name": "AuthenticationTemplate_Test","html_content": "${{ steps.template.outputs.contents }}" }'
         
