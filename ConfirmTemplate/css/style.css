@@ -1,11 +1,21 @@
-.align-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.successImg {
+  height: 30px;
+  width: 30px;
+  margin-right: 4px;
 }
 
-.inline {
-  display: inline;
+.logo {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 25px; 
+  line-height: 32px;
+  margin-left: 9px;
+}
+
+.align-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
 
 .circle {
@@ -29,7 +39,9 @@
 
 a {
   text-decoration: none;
-  outline: none; }
+  outline: none;
+  color: #1A2949
+ }
 
 .o_underline {
   text-decoration: underline; }
@@ -249,7 +261,7 @@ a.o_text-dark_light strong,
 a.o_text-white span,
 a.o_text-white strong,
 .o_text-white.o_link a {
-  color: #ffffff; }
+  color: #ffffff !important; }
 
 .o_text-light,
 a.o_text-light span,
@@ -389,10 +401,6 @@ table.o_right {
 .o_py-lg {
   padding-top: 32px;
   padding-bottom: 32px; }
-
-.logo_padd {
-  padding-bottom: 16px;
-}
 
 .o_py-xl {
   padding-top: 16px;
